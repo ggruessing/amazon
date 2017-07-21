@@ -1,0 +1,25 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ggruessing/amazon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ggruessing/amazon/issues"
+  },
+  "homepage": "https://github.com/ggruessing/amazon#readme",
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "console.table": "^0.8.0",
+    "inquirer": "^3.2.0",
+    "mysql": "^2.13.0"
+  }
+}
