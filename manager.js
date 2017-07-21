@@ -48,6 +48,20 @@ inquirer.prompt([
 		switch(second.pick){
 			case "view products":
 				tblr()
+				inquirer.prompt([
+								{
+									type: "confirm",
+									message: "Keep Shopping?",
+									name: "restart"
+								}
+							]).then(function(fifth){
+								if(fifth.restart){
+									manager()
+								}
+								else{
+									console.log("Later Tater")
+								}
+						})
 				break;
 			case "low inventory":
 
@@ -65,11 +79,11 @@ inquirer.prompt([
 						inquirer.prompt([
 				{
 					type: "input",
-					message: "How many are you adding?",
+					message: "Replenish stock to how many??",
 					name: "amount"
 				}
 			]).then(function(fourth){
-						connection.query("UPDATE inventory SET stock=? WHERE id=?", [fourth.pick,third.pick], function(err, res){
+						connection.query("UPDATE inventory SET stock=? WHERE id=?", [fourth.amount,third.amount], function(err, res){
 							if(err) throw err;
 							console.log("Inventory updated")
 							inquirer.prompt([
@@ -80,19 +94,57 @@ inquirer.prompt([
 								}
 							]).then(function(fifth){
 								if(fifth.restart){
-									manamger()
+									manager()
 								}
-								else
+								else{
 									console.log("Later Tater")
+								}
 						})
-					}
-				}
+					})
+				})
+		})
+			
 				break;
 			case "add new product":
+			inquirer.prompt([
+				{
+					type: "input",
+					message: "",
+					name: "amount"
+				}
+			]).then(function(third){
+					var num =parseInt(second.pick) - 1
+						inquirer.prompt([
+				{
+					type: "input",
+					message: "Replenish stock to how many??",
+					name: "amount"
+				}
+			]).then(function(fourth){
+						connection.query("UPDATE inventory SET stock=? WHERE id=?", [fourth.amount,third.amount], function(err, res){
+							if(err) throw err;
+							console.log("Inventory updated")
+							inquirer.prompt([
+								{
+									type: "confirm",
+									message: "Keep Shopping?",
+									name: "restart"
+								}
+							]).then(function(fifth){
+								if(fifth.restart){
+									manager()
+								}
+								else{
+									console.log("Later Tater")
+								}
+						})
+					})
+				})
 
 				break;
 		}
 	})
+}
 		
 
 module.exports = manager

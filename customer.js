@@ -75,9 +75,12 @@ inquirer.prompt([
 								if(fth.restart){
 									customer()
 								}
-								else
+								else{
 									console.log("Later Tater")
+								}
 							})
+						})
+					}
 							else{
 								console.log("Not enough in stock.")
 								inquirer.prompt([
@@ -90,15 +93,15 @@ inquirer.prompt([
 								if(fth.restart){
 									customer()
 								}
-							}
+							})
 							
 							
 
-						})
-					}
+						}
+					})
 				})
 			})
-	})
-}
+	}
+
 
 module.exports = customer
